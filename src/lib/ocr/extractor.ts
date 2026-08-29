@@ -52,11 +52,10 @@ export async function processPackageExtraction(
           message: "Extracted statutory declarations using Google Gemini Vision.",
         };
       }
-    }catch (e) {
-  console.error("========== GEMINI FAILED ==========");
-  console.error(e);
-  console.error("====================================");
-  throw e;
+    } catch (e) {
+      // Do not abort the extraction pipeline when Gemini fails.
+      // OpenAI and the local/demo fallbacks must still get a chance.
+      console.error("Gemini extraction failed; trying next provider:", e);
     }
   }
 

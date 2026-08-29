@@ -58,8 +58,11 @@ export async function extractWithGemini(
   }
 
   try {
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash-lite" });
+    const genAI = new GoogleGenerativeAI(apiKey.trim());
+    // Keep the model configurable so the deployment can be moved to a
+    // newer Gemini model without changing application code.
+    const modelName = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+    const model = genAI.getGenerativeModel({ model: modelName });
 
     // Clean base64 string
     const cleanBase64 = base64Data.replace(/^data:image\/[a-z]+;base64,/, "");
@@ -81,10 +84,8 @@ export async function extractWithGemini(
 
     const parsed = JSON.parse(jsonStr) as PackageDeclarations;
     return parsed;
-  }catch (error) {
-  console.error("========== GEMINI ERROR ==========");
-  console.error(error);
-  console.error("==================================");
-  throw error;
+  } catch (error) {
+    console.error("Gemini Vision extraction error:", error);
+    return null;
   }
 }

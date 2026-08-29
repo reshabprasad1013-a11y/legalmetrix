@@ -14,7 +14,7 @@
 ## 🌟 Key Features & Workflow
 
 1. **Upload Package Label**: Drag-and-drop or select sample package images (PNG, JPG, JPEG, WebP).
-2. **AI Vision & Heuristic Extraction**: Multi-provider OCR powered by Google Gemini Vision (`gemini-2.0-flash`), OpenAI Vision (`gpt-4o`), and deterministic local heuristic parser. Missing fields return `"Not detected"` rather than fabricated values.
+2. **AI Vision & Heuristic Extraction**: Multi-provider OCR powered by Google Gemini Vision (`gemini-3.5-flash-lite`), OpenAI Vision (`gpt-4o`), and deterministic local heuristic parser. Missing fields return `"Not detected"` rather than fabricated values.
 3. **Side-by-Side Inspector Verification**: Side-by-side view with zoomable label preview on the left and fully editable fields on the right. Compliance checks strictly use the user-confirmed values.
 4. **Deterministic Compliance Rule Engine**: Independent TypeScript rule engine implementing 12+ statutory checks from the Indian Legal Metrology Rules 2011.
 5. **Transparent Scoring & Violations**: Dynamic 0–100 weighted compliance score with category-level breakdowns and prioritized corrective recommendations.
@@ -131,7 +131,7 @@ npm test
 
 ### Implemented
 - [x] Next.js 15 + React 19 + TypeScript + Tailwind CSS full-stack architecture.
-- [x] Multi-provider Vision AI extraction (Gemini 2.0 Flash + OpenAI + Local Parser).
+- [x] Multi-provider Vision AI extraction (Gemini 3.5 Flash-Lite + OpenAI + Local Parser).
 - [x] Side-by-side inspector review and field editing with raw OCR audit trail.
 - [x] Deterministic 12-point Legal Metrology rule engine with conditional category logic.
 - [x] Weighted 0–100 compliance scoring with transparent penalty calculation.
